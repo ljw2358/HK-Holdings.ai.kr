@@ -1,89 +1,196 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK HOLDINGS | 글로벌 미래 산업의 중심</title>
-    <style>
-        body { background-color: #000; color: #fff; font-family: 'Apple SD Gothic Neo', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 50px 0; }
-        header { text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 30px; margin-bottom: 50px; }
-        h1 { font-size: 3.5rem; color: #d4af37; margin: 0; letter-spacing: 2px; }
-        .vision-text { font-size: 1.5rem; color: #fff; margin-top: 10px; font-weight: bold; }
-        
-        /* 글로벌 섹션 */
-        .global-vision { background: #111; padding: 30px; border-radius: 15px; margin-bottom: 50px; border: 1px solid #333; text-align: center; }
-        .global-vision p { margin: 10px 0; font-size: 1.1rem; border-bottom: 1px solid #222; padding-bottom: 5px; }
-        
-        /* 7대 산업 그리드 */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: #0a0a0a; border: 1px solid #222; padding: 30px; border-radius: 12px; transition: 0.4s; }
-        .card:hover { border-color: #d4af37; transform: translateY(-10px); background: #111; }
-        .card h3 { color: #d4af37; margin-top: 0; font-size: 1.4rem; border-left: 4px solid #d4af37; padding-left: 10px; }
-        
-        /* 포스코 및 뱅크 섹션 */
-        .highlight-section { margin-top: 60px; background: linear-gradient(135deg, #005aab 0%, #000 100%); padding: 50px; border-radius: 15px; border: 1px solid #005aab; }
-        .highlight-section h2 { color: #fff; font-size: 2.2rem; margin-top: 0; }
-        
-        /* 고객센터 FAQ */
-        .faq-section { margin-top: 50px; background: #050505; padding: 40px; border-radius: 15px; border: 1px solid #d4af37; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-item strong { color: #d4af37; font-size: 1.1rem; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HK-Holdings.ai.kr | HK Group</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&family=Noto+Sans+KR:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        footer { text-align: center; margin-top: 80px; padding: 50px 0; color: #666; border-top: 1px solid #222; font-size: 1rem; }
+    <style>
+        /* [1] 기본 변수 설정 (PC/Mobile 자동 대응) */
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #050505;
+            --card-bg: #121212;
+            --accent-blue: #00d2ff;
+            --text-silver: #C0C0C0;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* [2] 상단 네비게이션 (고정형 정보) */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; border-bottom: 1px solid rgba(214, 175, 55, 0.2);
+        }
+        .logo { font-family: 'Montserrat'; font-weight: 900; color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; }
+
+        /* [3] 메인 히어로 섹션 */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background: radial-gradient(circle at center, #1a0033 0%, #050505 100%);
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-family: 'Montserrat'; font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900;
+            color: var(--gold); letter-spacing: clamp(5px, 2vw, 15px); text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+        }
+        .hero p { font-size: 1.2rem; color: var(--text-silver); letter-spacing: 3px; font-weight: 100; }
+
+        /* [4] 15개 국어 글로벌 티커 (킬러 콘텐츠) */
+        .ticker-container {
+            width: 100%; overflow: hidden; background: rgba(212, 175, 55, 0.05);
+            border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+            padding: 15px 0; margin-top: 40px;
+        }
+        .ticker-wrapper { display: flex; white-space: nowrap; animation: ticker-move 50s linear infinite; }
+        .ticker-item { padding: 0 40px; color: var(--gold); font-size: 0.9rem; font-weight: 300; letter-spacing: 1px; }
+        @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* [5] 7대 핵심 전략 사업 그리드 */
+        .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; color: var(--gold); font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; letter-spacing: 4px; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .biz-card {
+            background: var(--card-bg); padding: 50px 30px; border: 1px solid rgba(255,255,255,0.05);
+            text-align: center; position: relative; transition: var(--transition);
+        }
+        .biz-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        .biz-card i { font-size: 3rem; color: var(--gold); margin-bottom: 25px; display: block; }
+        .biz-card h3 { font-size: 1.5rem; color: white; margin-bottom: 15px; letter-spacing: 1px; }
+        .biz-card p { color: #888; font-size: 0.95rem; font-weight: 300; }
+
+        /* [6] 푸터 & 연락처 */
+        footer { background: #000; padding: 80px 5% 40px; text-align: center; border-top: 1px solid #111; }
+        .contact-info { margin-bottom: 40px; }
+        .contact-info a { color: var(--gold); text-decoration: none; font-size: 1.2rem; border-bottom: 1px solid var(--gold); padding-bottom: 5px; }
+        .social-btns { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+        .s-btn { 
+            width: 50px; height: 50px; border: 1px solid var(--gold); color: var(--gold); 
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+            border-radius: 50%; transition: var(--transition);
+        }
+        .s-btn:hover { background: var(--gold); color: black; }
+        .copyright { margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px; }
+
     </style>
 </head>
 <body>
 
-<div class="container">
     <header>
-        <h1>HK HOLDINGS</h1>
-        <p class="vision-text">7대 핵심 미래 산업 및 글로벌 금융 제국</p>
+        <div class="logo">HK GROUP</div>
+        <div style="font-size: 0.8rem; color: var(--gold);">GLOBAL STRATEGIC ALLIANCE</div>
     </header>
 
-    <section class="global-vision">
-        <p><strong>[KR]</strong> 인류의 미래를 여는 7대 산업의 중심, HK 홀딩스.</p>
-        <p><strong>[EN]</strong> HK Holdings: The center of 7 core industries opening the future of humanity.</p>
-        <p><strong>[CN]</strong> HK控股：开启人类未来的七大核心产业中心。</p>
-        <p><strong>[AR]</strong> إتش كي هولدينغز: مركز الصناعات السبع الأساسية لمستقبل البشرية.</p>
-        <p><strong>[HI]</strong> एचके होल्डिंग्स: मानवता के भविष्य का केंद्र।</p>
-        <p><strong>[ES]</strong> HK Holdings: El centro de las 7 industrias clave.</p>
-        <p><strong>[PT]</strong> HK Holdings: O centro das 7 indústrias principais.</p>
-    </section>
+    <main>
+        <section class="hero">
+            <p>FUTURE OF HUMANITY</p>
+            <h1>HK HOLDINGS</h1>
+            <p>7 STELLAR INDUSTRIES & HK WORLDBANK</p>
 
-    <section class="grid">
-        <div class="card"><h3>01. 로봇 (Robot)</h3><p>Figure AI 인수를 통한 전 세계 휴머노이드 로봇 시장 지배 및 노동 혁명.</p></div>
-        <div class="card"><h3>02. 핵융합 (Fusion)</h3><p>인공 태양 에너지 상용화로 무한한 청정 에너지 공급망 확보.</p></div>
-        <div class="card"><h3>03. 우주 (Space)</h3><p>민간 우주 개발 및 행성 간 자원 확보 프로젝트 추진.</p></div>
-        <div class="card"><h3>04. 파츠뱅크 (Parts)</h3><p>글로벌 산업 부품의 디지털 자산화 및 통합 공급망 플랫폼.</p></div>
-        <div class="card"><h3>05. UAM (Mobility)</h3><p>3차원 도심 항공 모빌리티 구축으로 이동의 자유 실현.</p></div>
-        <div class="card"><h3>06. 홀로그램 (Display)</h3><p>차세대 입체 통신 기기 및 홀로그램 인터페이스 혁명.</p></div>
-        <div class="card"><h3>07. 바이오 (Quantum)</h3><p>양자 컴퓨팅 기반 신약 개발 및 인간 수명 연장 프로젝트.</p></div>
-    </section>
+            <div class="ticker-container">
+                <div class="ticker-wrapper">
+                    <span class="ticker-item">환영합니다 (KOR)</span>
+                    <span class="ticker-item">WELCOME (ENG)</span>
+                    <span class="ticker-item">欢迎 (CHN)</span>
+                    <span class="ticker-item">BIENVENUE (FRA)</span>
+                    <span class="ticker-item">WILLKOMMEN (GER)</span>
+                    <span class="ticker-item">BIENVENIDO (SPA)</span>
+                    <span class="ticker-item">ようこそ (JPN)</span>
+                    <span class="ticker-item">BEM-VINDO (BRA)</span>
+                    <span class="ticker-item">DOBRO (RUS)</span>
+                    <span class="ticker-item">SELAMAT (IDN)</span>
+                    <span class="ticker-item">CHÀO MỪNG (VIE)</span>
+                    <span class="ticker-item">ยินดีต้อนรับ (THA)</span>
+                    <span class="ticker-item">أهلاً (ARA)</span>
+                    <span class="ticker-item">SWAGAT (IND)</span>
+                    <span class="ticker-item">E KAABO (NGA)</span>
+                    <span class="ticker-item">환영합니다 (KOR)</span>
+                    <span class="ticker-item">WELCOME (ENG)</span>
+                    <span class="ticker-item">欢迎 (CHN)</span>
+                </div>
+            </div>
+        </section>
 
-    <section class="highlight-section">
-        <h2>POSCO 인수 및 에이치케이월드뱅크</h2>
-        <p>HK-Holdings는 포스코의 산업 기반과 에이치케이월드뱅크의 강력한 자본력을 결합합니다.<br>
-        31.4% 복리 스테이킹 모델을 통해 글로벌 투자 자본을 흡수하고, 전 세계 7대 핵심 산업을 주도하겠습니다.</p>
-    </section>
-
-    <section class="faq-section">
-        <h2>HK WorldBank 고객센터 (FAQ)</h2>
-        <div class="faq-item">
-            <strong>Q. 에이치케이월드뱅크의 핵심 가치는 무엇입니까?</strong><br>
-            A. 디지털 자산과 실물 경제를 연결하여 고수익 복리 모델을 제공하고 미래 산업에 투자하는 것입니다.
-        </div>
-        <div class="faq-item">
-            <strong>Q. 공식 연락처 및 지원</strong><br>
-            A. info@hkholdings.ai.kr | info@hkwb.co.kr (24시간 대응 시스템)
-        </div>
-    </section>
+        <section class="section">
+            <h2 class="section-title">7 STRATEGIC PILLARS</h2>
+            <div class="grid-container">
+                <div class="biz-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>ROBOTICS</h3>
+                    <p>Next-gen AI and Figure AI Integration.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-atom"></i>
+                    <h3>NUCLEAR FUSION</h3>
+                    <p>Infinite Clean Energy for the Earth.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>SPACE INDUSTRY</h3>
+                    <p>Building the Galactic Infrastructure.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-database"></i>
+                    <h3>PARTSBANK</h3>
+                    <p>Global Industrial Parts Distribution Hub.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-plane-up"></i>
+                    <h3>UAM</h3>
+                    <p>Urban Air Mobility & Future Transport.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-mobile-screen"></i>
+                    <h3>HOLOPHONE</h3>
+                    <p>Revolutionary 3D Holographic Devices.</p>
+                </div>
+                <div class="biz-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>QUANTUM BIO</h3>
+                    <p>Unlocking Longevity through Quantum Tech.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 HK GROUP & HK WorldBank. All Rights Reserved.</p>
-        <p style="color:#d4af37; font-weight:bold;">Founder & Chairman: 혜공 형님</p>
+        <div class="contact-info">
+            <p style="color: #666; margin-bottom: 10px;">Official Strategic Contact</p>
+            <a href="mailto:info@hkholdings.ai.kr">info@hkholdings.ai.kr</a>
+        </div>
+
+        <div class="social-btns">
+            <a href="https://youtube.com" class="s-btn"><i class="fab fa-youtube"></i></a>
+            <a href="https://tiktok.com" class="s-btn"><i class="fab fa-tiktok"></i></a>
+            <a href="https://hkwb.world" class="s-btn"><i class="fas fa-globe"></i></a>
+        </div>
+
+        <div class="copyright">
+            <p>CHAIRMAN: LEE JAEWAN (HYEKONG)</p>
+            <p>© 2026 HK GROUP. ALL RIGHTS RESERVED.</p>
+        </div>
     </footer>
-</div>
 
 </body>
 </html>
