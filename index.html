@@ -1,260 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HK Holdings | Global Future Industries Group</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK HOLDINGS | 글로벌 미래 산업의 중심</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Apple SD Gothic Neo', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 50px 0; }
+        header { text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 30px; margin-bottom: 50px; }
+        h1 { font-size: 3.5rem; color: #d4af37; margin: 0; letter-spacing: 2px; }
+        .vision-text { font-size: 1.5rem; color: #fff; margin-top: 10px; font-weight: bold; }
+        
+        /* 글로벌 섹션 */
+        .global-vision { background: #111; padding: 30px; border-radius: 15px; margin-bottom: 50px; border: 1px solid #333; text-align: center; }
+        .global-vision p { margin: 10px 0; font-size: 1.1rem; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        
+        /* 7대 산업 그리드 */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: #0a0a0a; border: 1px solid #222; padding: 30px; border-radius: 12px; transition: 0.4s; }
+        .card:hover { border-color: #d4af37; transform: translateY(-10px); background: #111; }
+        .card h3 { color: #d4af37; margin-top: 0; font-size: 1.4rem; border-left: 4px solid #d4af37; padding-left: 10px; }
+        
+        /* 포스코 및 뱅크 섹션 */
+        .highlight-section { margin-top: 60px; background: linear-gradient(135deg, #005aab 0%, #000 100%); padding: 50px; border-radius: 15px; border: 1px solid #005aab; }
+        .highlight-section h2 { color: #fff; font-size: 2.2rem; margin-top: 0; }
+        
+        /* 고객센터 FAQ */
+        .faq-section { margin-top: 50px; background: #050505; padding: 40px; border-radius: 15px; border: 1px solid #d4af37; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item strong { color: #d4af37; font-size: 1.1rem; }
 
-<style>
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(120deg,#000000,#0f2027,#141e30,#243b55);
-    color:white;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:80px 30px;
-}
-
-h1{
-    font-size:60px;
-    background: linear-gradient(90deg,#00f5ff,#00ff94,#7b2cff,#00c3ff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:15px;
-}
-
-.subtitle{
-    font-size:22px;
-    color:#cccccc;
-    margin-bottom:60px;
-}
-
-.section{
-    margin-bottom:70px;
-}
-
-.section h2{
-    font-size:28px;
-    color:#00ffe7;
-    border-bottom:1px solid rgba(255,255,255,0.2);
-    padding-bottom:10px;
-    margin-bottom:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card{
-    background: rgba(255,255,255,0.05);
-    padding:30px;
-    border-radius:15px;
-    border:1px solid rgba(0,255,231,0.2);
-    transition:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#00ffe7;
-    box-shadow:0 0 20px #00ffe7;
-}
-
-.language-buttons{
-    position:absolute;
-    top:20px;
-    right:30px;
-}
-
-.language-buttons button{
-    background:transparent;
-    border:1px solid #00ffe7;
-    color:#00ffe7;
-    padding:8px 14px;
-    margin-left:8px;
-    cursor:pointer;
-}
-
-.language-buttons button:hover{
-    background:#00ffe7;
-    color:black;
-}
-
-.footer{
-    margin-top:80px;
-    font-size:15px;
-    color:#aaaaaa;
-    border-top:1px solid rgba(255,255,255,0.2);
-    padding-top:30px;
-}
-.highlight{
-    color:#00ff94;
-    font-weight:bold;
-}
-</style>
-
-<script>
-function changeLanguage(lang){
-
-const content = {
-
-ko:{
-title:"HK Holdings",
-subtitle:"로보틱스 · AI · 디지털금융 · 에너지 통합 글로벌 지주 플랫폼",
-overview:"HK Holdings는 차세대 기술 산업을 통합하는 글로벌 전략 지주회사로서 로보틱스, 인공지능, Web3 금융, 첨단소재 및 에너지 산업을 아우르는 미래 산업 생태계를 구축합니다.",
-strategy:"글로벌 전략",
-strategyText:"기술 융합, 전략적 파트너십, 글로벌 공급망 확장을 통해 2035년 세계 5대 미래산업 그룹으로 도약.",
-portfolio:[
-"HK FIGURE – 차세대 AI 로보틱스 및 스마트팩토리",
-"HK Bank – Web3 디지털 금융 인프라",
-"HK Energy – 친환경 에너지 및 첨단소재",
-"HK AI Systems – 초지능 데이터 플랫폼"
-],
-investment:"투자 방향",
-investmentText:"글로벌 기술 기업 인수합병(M&A), 전략적 합작 투자, 혁신 스타트업 육성",
-vision:"비전 2035",
-visionText:"기술로 세상을 재정의하는 글로벌 산업 리더",
-contact:"문의: info@hkholdings.com"
-},
-
-en:{
-title:"HK Holdings",
-subtitle:"Global Holding Platform for Robotics · AI · Digital Finance · Energy",
-overview:"HK Holdings is a global strategic holding company integrating next-generation robotics, AI, Web3 finance, advanced materials and sustainable energy.",
-strategy:"Global Strategy",
-strategyText:"Through technology convergence, strategic partnerships and global supply chain expansion, we aim to become a Top 5 Future Industry Group by 2035.",
-portfolio:[
-"HK FIGURE – AI Robotics & Smart Factory",
-"HK Bank – Web3 Digital Finance Infrastructure",
-"HK Energy – Green Energy & Advanced Materials",
-"HK AI Systems – Super Intelligence Data Platform"
-],
-investment:"Investment Focus",
-investmentText:"Global M&A, strategic joint ventures and high-growth technology startups.",
-vision:"Vision 2035",
-visionText:"Redefining Industries Through Technology.",
-contact:"Contact: info@hkholdings.com"
-},
-
-zh:{
-title:"HK Holdings",
-subtitle:"机器人 · 人工智能 · 数字金融 · 能源 全球控股平台",
-overview:"HK Holdings是一家整合机器人、人工智能、Web3金融、先进材料与可持续能源的全球战略控股公司。",
-strategy:"全球战略",
-strategyText:"通过技术融合与战略合作，力争2035年进入全球五大未来产业集团。",
-portfolio:[
-"HK FIGURE – AI机器人与智能工厂",
-"HK Bank – Web3数字金融平台",
-"HK Energy – 绿色能源与先进材料",
-"HK AI Systems – 超级智能数据平台"
-],
-investment:"投资方向",
-investmentText:"全球并购、战略合资与创新科技企业孵化。",
-vision:"2035愿景",
-visionText:"以科技重新定义世界。",
-contact:"联系: info@hkholdings.com"
-},
-
-ar:{
-title:"HK Holdings",
-subtitle:"منصة قابضة عالمية للروبوتات والذكاء الاصطناعي والتمويل الرقمي والطاقة",
-overview:"HK Holdings هي شركة قابضة استراتيجية عالمية تدمج الروبوتات والذكاء الاصطناعي والتمويل الرقمي Web3 والطاقة المستدامة.",
-strategy:"الاستراتيجية العالمية",
-strategyText:"من خلال تكامل التكنولوجيا والشراكات الاستراتيجية نسعى للدخول ضمن أفضل 5 مجموعات صناعية مستقبلية بحلول 2035.",
-portfolio:[
-"HK FIGURE – روبوتات وذكاء اصطناعي",
-"HK Bank – بنية تحتية للتمويل الرقمي",
-"HK Energy – طاقة خضراء ومواد متقدمة",
-"HK AI Systems – منصة بيانات فائقة الذكاء"
-],
-investment:"مجالات الاستثمار",
-investmentText:"استحواذات عالمية وشراكات استراتيجية وشركات تقنية ناشئة.",
-vision:"رؤية 2035",
-visionText:"إعادة تعريف الصناعات بالتكنولوجيا.",
-contact:"للتواصل: info@hkholdings.com"
-}
-};
-
-document.getElementById("title").innerText=content[lang].title;
-document.getElementById("subtitle").innerText=content[lang].subtitle;
-document.getElementById("overview").innerText=content[lang].overview;
-document.getElementById("strategyTitle").innerText=content[lang].strategy;
-document.getElementById("strategyText").innerText=content[lang].strategyText;
-document.getElementById("investmentTitle").innerText=content[lang].investment;
-document.getElementById("investmentText").innerText=content[lang].investmentText;
-document.getElementById("visionTitle").innerText=content[lang].vision;
-document.getElementById("visionText").innerText=content[lang].visionText;
-document.getElementById("contact").innerText=content[lang].contact;
-
-let grid=document.getElementById("portfolioList");
-grid.innerHTML="";
-content[lang].portfolio.forEach(item=>{
-let div=document.createElement("div");
-div.className="card";
-div.innerText=item;
-grid.appendChild(div);
-});
-
-if(lang=="ar"){document.body.style.direction="rtl";}
-else{document.body.style.direction="ltr";}
-}
-</script>
+        footer { text-align: center; margin-top: 80px; padding: 50px 0; color: #666; border-top: 1px solid #222; font-size: 1rem; }
+    </style>
 </head>
-
 <body>
 
-<div class="language-buttons">
-<button onclick="changeLanguage('ko')">한국어</button>
-<button onclick="changeLanguage('en')">English</button>
-<button onclick="changeLanguage('zh')">中文</button>
-<button onclick="changeLanguage('ar')">العربية</button>
-</div>
-
 <div class="container">
+    <header>
+        <h1>HK HOLDINGS</h1>
+        <p class="vision-text">7대 핵심 미래 산업 및 글로벌 금융 제국</p>
+    </header>
 
-<h1 id="title">HK Holdings</h1>
-<div class="subtitle" id="subtitle"></div>
+    <section class="global-vision">
+        <p><strong>[KR]</strong> 인류의 미래를 여는 7대 산업의 중심, HK 홀딩스.</p>
+        <p><strong>[EN]</strong> HK Holdings: The center of 7 core industries opening the future of humanity.</p>
+        <p><strong>[CN]</strong> HK控股：开启人类未来的七大核心产业中心。</p>
+        <p><strong>[AR]</strong> إتش كي هولدينغز: مركز الصناعات السبع الأساسية لمستقبل البشرية.</p>
+        <p><strong>[HI]</strong> एचके होल्डिंग्स: मानवता के भविष्य का केंद्र।</p>
+        <p><strong>[ES]</strong> HK Holdings: El centro de las 7 industrias clave.</p>
+        <p><strong>[PT]</strong> HK Holdings: O centro das 7 indústrias principais.</p>
+    </section>
 
-<div class="section">
-<h2>Overview</h2>
-<p id="overview"></p>
+    <section class="grid">
+        <div class="card"><h3>01. 로봇 (Robot)</h3><p>Figure AI 인수를 통한 전 세계 휴머노이드 로봇 시장 지배 및 노동 혁명.</p></div>
+        <div class="card"><h3>02. 핵융합 (Fusion)</h3><p>인공 태양 에너지 상용화로 무한한 청정 에너지 공급망 확보.</p></div>
+        <div class="card"><h3>03. 우주 (Space)</h3><p>민간 우주 개발 및 행성 간 자원 확보 프로젝트 추진.</p></div>
+        <div class="card"><h3>04. 파츠뱅크 (Parts)</h3><p>글로벌 산업 부품의 디지털 자산화 및 통합 공급망 플랫폼.</p></div>
+        <div class="card"><h3>05. UAM (Mobility)</h3><p>3차원 도심 항공 모빌리티 구축으로 이동의 자유 실현.</p></div>
+        <div class="card"><h3>06. 홀로그램 (Display)</h3><p>차세대 입체 통신 기기 및 홀로그램 인터페이스 혁명.</p></div>
+        <div class="card"><h3>07. 바이오 (Quantum)</h3><p>양자 컴퓨팅 기반 신약 개발 및 인간 수명 연장 프로젝트.</p></div>
+    </section>
+
+    <section class="highlight-section">
+        <h2>POSCO 인수 및 에이치케이월드뱅크</h2>
+        <p>HK-Holdings는 포스코의 산업 기반과 에이치케이월드뱅크의 강력한 자본력을 결합합니다.<br>
+        31.4% 복리 스테이킹 모델을 통해 글로벌 투자 자본을 흡수하고, 전 세계 7대 핵심 산업을 주도하겠습니다.</p>
+    </section>
+
+    <section class="faq-section">
+        <h2>HK WorldBank 고객센터 (FAQ)</h2>
+        <div class="faq-item">
+            <strong>Q. 에이치케이월드뱅크의 핵심 가치는 무엇입니까?</strong><br>
+            A. 디지털 자산과 실물 경제를 연결하여 고수익 복리 모델을 제공하고 미래 산업에 투자하는 것입니다.
+        </div>
+        <div class="faq-item">
+            <strong>Q. 공식 연락처 및 지원</strong><br>
+            A. info@hkholdings.ai.kr | info@hkwb.co.kr (24시간 대응 시스템)
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 HK GROUP & HK WorldBank. All Rights Reserved.</p>
+        <p style="color:#d4af37; font-weight:bold;">Founder & Chairman: 혜공 형님</p>
+    </footer>
 </div>
-
-<div class="section">
-<h2 id="strategyTitle"></h2>
-<p id="strategyText"></p>
-</div>
-
-<div class="section">
-<h2>Portfolio</h2>
-<div class="grid" id="portfolioList"></div>
-</div>
-
-<div class="section">
-<h2 id="investmentTitle"></h2>
-<p id="investmentText"></p>
-</div>
-
-<div class="section">
-<h2 id="visionTitle"></h2>
-<p id="visionText"></p>
-</div>
-
-<div class="footer">
-<p id="contact"></p>
-© 2026 HK Holdings | Global Future Industries Group
-</div>
-
-</div>
-
-<script>
-changeLanguage('ko');
-</script>
 
 </body>
 </html>
