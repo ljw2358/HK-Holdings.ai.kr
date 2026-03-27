@@ -1,194 +1,201 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HK-Holdings.ai.kr | HK Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK-Holdings.ai.kr | HK Group Global Vision</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&family=Noto+Sans+KR:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Noto+Sans+KR:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* [1] 기본 변수 설정 (PC/Mobile 자동 대응) */
         :root {
             --gold: #D4AF37;
             --dark-bg: #050505;
-            --card-bg: #121212;
             --accent-blue: #00d2ff;
             --text-silver: #C0C0C0;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --glow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: var(--dark-bg);
             color: white;
-            font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
-            line-height: 1.6;
+            font-family: 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
+            letter-spacing: -0.02em;
         }
 
-        /* [2] 상단 네비게이션 (고정형 정보) */
-        header {
+        /* 15개 언어 글로벌 티커 (무한 반복) */
+        .global-ticker {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; border-bottom: 1px solid rgba(214, 175, 55, 0.2);
+            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--gold);
+            padding: 12px 0; overflow: hidden;
         }
-        .logo { font-family: 'Montserrat'; font-weight: 900; color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; }
+        .ticker-track {
+            display: flex; width: max-content;
+            animation: scroll 60s linear infinite;
+        }
+        .lang-item {
+            padding: 0 40px; font-size: 0.85rem; color: var(--gold);
+            font-weight: 400; letter-spacing: 1px; white-space: nowrap;
+        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* [3] 메인 히어로 섹션 */
+        /* 히어로 섹션 - 대서사시의 시작 */
         .hero {
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; background: radial-gradient(circle at center, #1a0033 0%, #050505 100%);
-            padding: 0 20px;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+            padding-top: 50px;
         }
-        .hero h1 {
-            font-family: 'Montserrat'; font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900;
-            color: var(--gold); letter-spacing: clamp(5px, 2vw, 15px); text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-            margin-bottom: 10px;
+        .hero-title {
+            font-family: 'Montserrat'; font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900; color: var(--gold); letter-spacing: 15px;
+            text-shadow: var(--glow); margin-bottom: 20px;
         }
-        .hero p { font-size: 1.2rem; color: var(--text-silver); letter-spacing: 3px; font-weight: 100; }
+        .hero-sub {
+            font-size: 1.5rem; color: var(--text-silver); font-weight: 100;
+            letter-spacing: 5px; margin-bottom: 50px;
+        }
 
-        /* [4] 15개 국어 글로벌 티커 (킬러 콘텐츠) */
-        .ticker-container {
-            width: 100%; overflow: hidden; background: rgba(212, 175, 55, 0.05);
-            border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
-            padding: 15px 0; margin-top: 40px;
+        /* 킬러 콘텐츠: 유튜브 & 틱톡 미디어 섹션 */
+        .media-hub {
+            padding: 100px 5%; background: #0a0a0a;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
         }
-        .ticker-wrapper { display: flex; white-space: nowrap; animation: ticker-move 50s linear infinite; }
-        .ticker-item { padding: 0 40px; color: var(--gold); font-size: 0.9rem; font-weight: 300; letter-spacing: 1px; }
-        @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .media-card {
+            background: #151515; border: 1px solid #222; border-radius: 20px;
+            padding: 40px; text-align: center; transition: 0.4s;
+        }
+        .media-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .media-card i { font-size: 4rem; margin-bottom: 20px; }
+        .youtube-icon { color: #FF0000; }
+        .tiktok-icon { color: #00f2ea; }
 
-        /* [5] 7대 핵심 전략 사업 그리드 */
-        .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; color: var(--gold); font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; letter-spacing: 4px; }
+        /* 7대 핵심 전략 산업 (풍성한 설명) */
+        .vision-section { padding: 120px 5%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3rem; color: var(--gold); font-weight: 700; letter-spacing: 3px; }
         
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        .vision-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-        .biz-card {
-            background: var(--card-bg); padding: 50px 30px; border: 1px solid rgba(255,255,255,0.05);
-            text-align: center; position: relative; transition: var(--transition);
+        .vision-card {
+            background: linear-gradient(145deg, #111, #050505);
+            padding: 60px 40px; border-left: 4px solid var(--gold);
+            transition: 0.3s;
         }
-        .biz-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
-        .biz-card i { font-size: 3rem; color: var(--gold); margin-bottom: 25px; display: block; }
-        .biz-card h3 { font-size: 1.5rem; color: white; margin-bottom: 15px; letter-spacing: 1px; }
-        .biz-card p { color: #888; font-size: 0.95rem; font-weight: 300; }
+        .vision-card:hover { background: #1a1a1a; box-shadow: var(--glow); }
+        .vision-card h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--gold); }
+        .vision-card p { color: #aaa; line-height: 1.8; font-weight: 300; }
 
-        /* [6] 푸터 & 연락처 */
-        footer { background: #000; padding: 80px 5% 40px; text-align: center; border-top: 1px solid #111; }
-        .contact-info { margin-bottom: 40px; }
-        .contact-info a { color: var(--gold); text-decoration: none; font-size: 1.2rem; border-bottom: 1px solid var(--gold); padding-bottom: 5px; }
-        .social-btns { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
-        .s-btn { 
-            width: 50px; height: 50px; border: 1px solid var(--gold); color: var(--gold); 
-            display: flex; align-items: center; justify-content: center; text-decoration: none;
-            border-radius: 50%; transition: var(--transition);
+        /* 푸터 - 공식 컨택 포인트 */
+        footer {
+            background: #000; padding: 100px 5% 50px; border-top: 1px solid #222;
+            text-align: center;
         }
-        .s-btn:hover { background: var(--gold); color: black; }
-        .copyright { margin-top: 60px; color: #444; font-size: 0.8rem; letter-spacing: 1px; }
+        .footer-mail {
+            font-size: 1.8rem; color: var(--gold); text-decoration: none;
+            display: inline-block; margin-bottom: 40px; border-bottom: 1px solid var(--gold);
+        }
+        .chairman-tag { font-family: 'Montserrat'; font-weight: 900; letter-spacing: 2px; color: white; }
 
+        @media (max-width: 768px) {
+            .media-hub { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">HK GROUP</div>
-        <div style="font-size: 0.8rem; color: var(--gold);">GLOBAL STRATEGIC ALLIANCE</div>
-    </header>
+    <div class="global-ticker">
+        <div class="ticker-track">
+            <span class="lang-item">환영합니다 (KOR)</span>
+            <span class="lang-item">WELCOME (ENG)</span>
+            <span class="lang-item">欢迎 (CHN)</span>
+            <span class="lang-item">أهلاً (ARA)</span>
+            <span class="lang-item">नमस्ते (IND)</span>
+            <span class="lang-item">DOBRO (RUS)</span>
+            <span class="lang-item">BIENVENUE (FRA)</span>
+            <span class="lang-item">Вітаємо (UKR)</span>
+            <span class="lang-item">ようこそ (JPN)</span>
+            <span class="lang-item">BIENVENIDO (SPA)</span>
+            <span class="lang-item">BEM-VINDO (BRA)</span>
+            <span class="lang-item">SELAMAT (IDN)</span>
+            <span class="lang-item">CHÀO MỪNG (VIE)</span>
+            <span class="lang-item">ยินดีต้อนรับ (THA)</span>
+            <span class="lang-item">E KAABO (NGA)</span>
+            <span class="lang-item">환영합니다 (KOR)</span>
+            <span class="lang-item">WELCOME (ENG)</span>
+            <span class="lang-item">欢迎 (CHN)</span>
+        </div>
+    </div>
 
-    <main>
-        <section class="hero">
-            <p>FUTURE OF HUMANITY</p>
-            <h1>HK HOLDINGS</h1>
-            <p>7 STELLAR INDUSTRIES & HK WORLDBANK</p>
+    <section class="hero">
+        <div class="hero-title">HK GROUP</div>
+        <div class="hero-sub">GLOBAL STELLAR INDUSTRIES</div>
+        <p style="max-width: 800px; font-weight: 100; color: #888;">지속 가능한 인류의 미래와 우주 개척을 위한 HK 그룹의 원대한 서사시가 시작됩니다.</p>
+    </section>
 
-            <div class="ticker-container">
-                <div class="ticker-wrapper">
-                    <span class="ticker-item">환영합니다 (KOR)</span>
-                    <span class="ticker-item">WELCOME (ENG)</span>
-                    <span class="ticker-item">欢迎 (CHN)</span>
-                    <span class="ticker-item">BIENVENUE (FRA)</span>
-                    <span class="ticker-item">WILLKOMMEN (GER)</span>
-                    <span class="ticker-item">BIENVENIDO (SPA)</span>
-                    <span class="ticker-item">ようこそ (JPN)</span>
-                    <span class="ticker-item">BEM-VINDO (BRA)</span>
-                    <span class="ticker-item">DOBRO (RUS)</span>
-                    <span class="ticker-item">SELAMAT (IDN)</span>
-                    <span class="ticker-item">CHÀO MỪNG (VIE)</span>
-                    <span class="ticker-item">ยินดีต้อนรับ (THA)</span>
-                    <span class="ticker-item">أهلاً (ARA)</span>
-                    <span class="ticker-item">SWAGAT (IND)</span>
-                    <span class="ticker-item">E KAABO (NGA)</span>
-                    <span class="ticker-item">환영합니다 (KOR)</span>
-                    <span class="ticker-item">WELCOME (ENG)</span>
-                    <span class="ticker-item">欢迎 (CHN)</span>
-                </div>
+    <section class="media-hub">
+        <div class="media-card">
+            <i class="fab fa-youtube youtube-icon"></i>
+            <h3>HK OFFICIAL YOUTUBE</h3>
+            <p>전 세계 파트너들과 공유하는 혁신의 기록</p>
+            <a href="https://youtube.com" style="color: var(--gold); margin-top: 20px; display: inline-block;">WATCH NOW →</a>
+        </div>
+        <div class="media-card">
+            <i class="fab fa-tiktok tiktok-icon"></i>
+            <h3>HK OFFICIAL TIKTOK</h3>
+            <p>가장 빠르게 만나는 HK의 미래 기술 숏폼</p>
+            <a href="https://tiktok.com" style="color: var(--gold); margin-top: 20px; display: inline-block;">FOLLOW US →</a>
+        </div>
+    </section>
+
+    <section class="vision-section">
+        <div class="section-header">
+            <h2>7 CORE PILLARS</h2>
+        </div>
+        <div class="vision-grid">
+            <div class="vision-card">
+                <h3>01. ROBOTICS</h3>
+                <p>Figure AI와의 기술 통합을 통해 인간의 노동을 자유롭게 하는 지능형 로봇 시대를 선도합니다.</p>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">7 STRATEGIC PILLARS</h2>
-            <div class="grid-container">
-                <div class="biz-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>ROBOTICS</h3>
-                    <p>Next-gen AI and Figure AI Integration.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-atom"></i>
-                    <h3>NUCLEAR FUSION</h3>
-                    <p>Infinite Clean Energy for the Earth.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>SPACE INDUSTRY</h3>
-                    <p>Building the Galactic Infrastructure.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-database"></i>
-                    <h3>PARTSBANK</h3>
-                    <p>Global Industrial Parts Distribution Hub.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-plane-up"></i>
-                    <h3>UAM</h3>
-                    <p>Urban Air Mobility & Future Transport.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-mobile-screen"></i>
-                    <h3>HOLOPHONE</h3>
-                    <p>Revolutionary 3D Holographic Devices.</p>
-                </div>
-                <div class="biz-card">
-                    <i class="fas fa-dna"></i>
-                    <h3>QUANTUM BIO</h3>
-                    <p>Unlocking Longevity through Quantum Tech.</p>
-                </div>
+            <div class="vision-card">
+                <h3>02. NUCLEAR FUSION</h3>
+                <p>꿈의 에너지, 인공태양 기술을 통해 인류에게 무한하고 깨끗한 에너지를 공급합니다.</p>
             </div>
-        </section>
-    </main>
+            <div class="vision-card">
+                <h3>03. SPACE INDUSTRY</h3>
+                <p>지구를 넘어 화성과 성간 이동을 가능하게 하는 우주 인프라와 기지를 건설합니다.</p>
+            </div>
+            <div class="vision-card">
+                <h3>04. PARTSBANK</h3>
+                <p>전 세계 산업 현장을 잇는 부품 물류의 심장부로서 글로벌 공급망의 정점이 됩니다.</p>
+            </div>
+            <div class="vision-card">
+                <h3>05. UAM</h3>
+                <p>도심 하늘길을 여는 혁신적 비행 이동 수단으로 교통 혁명을 완수합니다.</p>
+            </div>
+            <div class="vision-card">
+                <h3>06. HOLOPHONE</h3>
+                <p>스크린의 한계를 넘어 3차원 공간에서 소통하는 홀로그램 통신의 혁명을 시작합니다.</p>
+            </div>
+            <div class="vision-card">
+                <h3>07. QUANTUM BIO</h3>
+                <p>양자 기술과 바이오의 결합으로 난치병을 정복하고 인류의 생명 연장을 실현합니다.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <div class="contact-info">
-            <p style="color: #666; margin-bottom: 10px;">Official Strategic Contact</p>
-            <a href="mailto:info@hkholdings.ai.kr">info@hkholdings.ai.kr</a>
-        </div>
-
-        <div class="social-btns">
-            <a href="https://youtube.com" class="s-btn"><i class="fab fa-youtube"></i></a>
-            <a href="https://tiktok.com" class="s-btn"><i class="fab fa-tiktok"></i></a>
-            <a href="https://hkwb.world" class="s-btn"><i class="fas fa-globe"></i></a>
-        </div>
-
-        <div class="copyright">
-            <p>CHAIRMAN: LEE JAEWAN (HYEKONG)</p>
-            <p>© 2026 HK GROUP. ALL RIGHTS RESERVED.</p>
+        <p style="color: #555; margin-bottom: 20px;">GLOBAL STRATEGIC CONTACT</p>
+        <a href="mailto:info@hkholdings.ai.kr" class="footer-mail">info@hkholdings.ai.kr</a>
+        
+        <div style="margin: 50px 0;">
+            <p class="chairman-tag">CHAIRMAN: LEE JAEWAN (HYEKONG)</p>
+            <p style="color: #333; font-size: 0.8rem; margin-top: 10px;">© 2026 HK GROUP HOLDINGS. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
