@@ -3,250 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HK HOLDINGS | GLOBAL STRATEGIC ALLIANCE</title>
+    <title>HK HOLDINGS | GLOBAL STRATEGIC ALLIANCE 2126</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --gold: #D4AF37;
             --dark-bg: #050505;
-            --card-bg: #0f0f0f;
-            --text-gray: #777;
-            --glow: 0 0 30px rgba(212, 175, 55, 0.3);
+            --card-bg: #0c0c0c;
+            --glow: 0 0 25px rgba(212, 175, 55, 0.3);
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* 기본 설정 */
+        /* 기본 설정 및 자율 조정(Responsive) */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             background-color: var(--dark-bg);
             color: white;
             font-family: 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
-            line-height: 1.8;
+            line-height: 2;
         }
 
-        /* [1] 15개국 언어 글로벌 티커 (상단 고정) */
-        .ticker-wrap {
-            position: fixed; top: 0; width: 100%; z-index: 2000;
-            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--gold);
-            padding: 15px 0; overflow: hidden; backdrop-filter: blur(10px);
+        /* [1] 언어 선택: 우측 상단 작게 */
+        .top-lang {
+            position: fixed; top: 15px; right: 20px; z-index: 3000;
+            font-size: 0.65rem; color: #555; font-weight: 300;
+            letter-spacing: 1px; text-transform: uppercase;
+            pointer-events: none; /* 클릭 방해 금지 */
         }
-        .ticker {
-            display: flex; width: max-content; animation: scroll 60s linear infinite;
-        }
-        .ticker span {
-            padding: 0 40px; font-size: 0.85rem; color: var(--gold);
-            font-weight: 300; letter-spacing: 2px; white-space: nowrap;
-        }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* [2] HK HOLDINGS 중앙 로고 */
         header {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
         .main-logo {
-            font-family: 'Montserrat'; font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900; color: var(--gold); letter-spacing: 20px;
+            font-family: 'Montserrat'; font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900; color: var(--gold); letter-spacing: 25px;
             text-shadow: var(--glow); margin-bottom: 20px;
         }
-        .sub-text {
-            font-family: 'Montserrat'; font-size: 1rem; color: var(--text-gray);
-            letter-spacing: 10px; font-weight: 100;
+        .sub-vision {
+            font-family: 'Montserrat'; font-size: 1rem; color: #444;
+            letter-spacing: 12px; font-weight: 100; text-transform: uppercase;
         }
 
-        /* [3] 7개 큰 제목만 화면에 (아코디언 스타일) */
-        .vision-container { max-width: 1200px; margin: 0 auto 150px; padding: 0 20px; }
+        /* [3] 7대 섹터: 클릭형 대서사시 (내용 500줄 이상급 볼륨) */
+        .vision-wall { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
         
         .sector {
-            background: var(--card-bg); border: 1px solid #1a1a1a;
-            margin-bottom: 30px; transition: 0.5s;
+            background: var(--card-bg); border: 1px solid #151515;
+            margin-bottom: 40px; transition: var(--transition);
         }
         .sector:hover { border-color: var(--gold); box-shadow: var(--glow); }
 
         summary {
-            padding: 40px; font-family: 'Montserrat'; font-size: clamp(1.2rem, 4vw, 2.2rem);
+            padding: 50px 40px; font-family: 'Montserrat'; font-size: clamp(1.3rem, 5vw, 2.5rem);
             font-weight: 900; color: var(--gold); cursor: pointer; list-style: none;
             display: flex; justify-content: space-between; align-items: center;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
         }
-        summary::after { content: "+"; font-size: 2rem; color: var(--gold); transition: 0.4s; }
-        details[open] summary::after { transform: rotate(45deg); }
+        summary::after { content: "▼"; font-size: 1rem; transition: 0.4s; }
+        details[open] summary::after { transform: rotate(180deg); }
 
-        /* [4] 클릭하면 나오는 세밀한 내용 (500줄 이상의 가치) */
-        .details-content {
-            padding: 0 40px 60px; color: #ccc; font-weight: 300; font-size: 1.1rem;
-            border-top: 1px solid #222; margin-top: 10px; padding-top: 40px;
+        /* 풍부하고 세밀한 내용 스타일 */
+        .content {
+            padding: 0 40px 60px; color: #aaa; font-weight: 300; font-size: 1.15rem;
+            border-top: 1px solid #222; margin-top: 10px; padding-top: 50px;
         }
-        .details-content h4 { color: white; margin-bottom: 20px; font-size: 1.5rem; }
-        .details-content p { margin-bottom: 25px; line-height: 2.2; }
-        .tech-list { list-style: none; margin-bottom: 30px; }
-        .tech-list li {
-            padding-left: 30px; position: relative; margin-bottom: 15px;
-            color: var(--text-silver);
-        }
-        .tech-list li::before {
-            content: "◆"; position: absolute; left: 0; color: var(--gold);
-        }
+        .content h4 { color: white; margin: 40px 0 20px; font-size: 1.6rem; font-weight: 700; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 5px; }
+        .content p { margin-bottom: 30px; line-height: 2.3; }
+        .tech-box { background: #080808; padding: 30px; border-left: 3px solid var(--gold); margin-bottom: 40px; }
+        .tech-box ul { list-style: none; }
+        .tech-box li { margin-bottom: 15px; padding-left: 25px; position: relative; color: var(--text-silver); }
+        .tech-box li::before { content: "◆"; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; }
 
-        /* [5] 유튜브/틱톡 및 이메일 (최하단) */
+        /* [4] 유튜브 & 틱톡 및 이메일 (최하단) */
         footer {
-            padding: 150px 20px 80px; text-align: center; border-top: 1px solid #222;
+            padding: 150px 20px 100px; text-align: center; border-top: 1px solid #111;
             background: #000;
         }
         .footer-mail {
-            font-size: clamp(1.5rem, 5vw, 2.5rem); color: var(--gold); text-decoration: none;
-            font-weight: 900; border-bottom: 3px solid var(--gold); display: inline-block;
-            margin-bottom: 80px; transition: 0.3s;
+            font-size: clamp(1.4rem, 6vw, 2.8rem); color: var(--gold); text-decoration: none;
+            font-weight: 900; border-bottom: 4px solid var(--gold); display: inline-block;
+            margin-bottom: 100px; transition: 0.3s;
         }
         .footer-mail:hover { color: white; border-color: white; }
 
-        .social-hub { display: flex; justify-content: center; gap: 60px; margin-bottom: 100px; }
-        .social-hub a {
+        .social-container { display: flex; justify-content: center; gap: 80px; margin-bottom: 120px; }
+        .social-container a {
             color: white; text-decoration: none; display: flex; flex-direction: column;
-            align-items: center; gap: 15px; transition: 0.3s;
+            align-items: center; gap: 20px; transition: 0.4s;
         }
-        .social-hub i { font-size: 3.5rem; }
-        .social-hub span { font-family: 'Montserrat'; font-weight: 700; letter-spacing: 2px; }
-        .social-hub a:hover { color: var(--gold); transform: translateY(-10px); }
+        .social-container i { font-size: 4rem; }
+        .social-container span { font-family: 'Montserrat'; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; }
+        .social-container a:hover { color: var(--gold); transform: translateY(-15px); }
 
-        .chairman-signature { font-family: 'Montserrat'; font-weight: 900; color: #333; letter-spacing: 5px; }
+        .signature { font-family: 'Montserrat'; font-weight: 900; color: #222; letter-spacing: 10px; font-size: 1.2rem; }
 
-        /* 폰 자율 조정 */
         @media (max-width: 768px) {
-            .social-hub { flex-direction: column; gap: 40px; }
-            summary { padding: 30px 20px; }
-            .details-content { padding: 30px 20px; }
+            .social-container { flex-direction: column; gap: 50px; }
+            summary { padding: 40px 20px; }
+            .content { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span>KOREAN: 인류의 도약</span><span>ENGLISH: HUMAN LEAP</span><span>CHINESE: 人类跨越</span><span>ARABIC: قفزة البشرية</span><span>HINDI: मानवता की छलांग</span><span>RUSSIAN: ПРЫЖОК ЧЕЛОВЕЧЕСТВА</span><span>FRENCH: SAUT DE L'HUMANITÉ</span><span>UKRAINIAN: СТРИБОК ЛЮДСТВА</span><span>JAPANESE: 人類の躍進</span><span>SPANISH: SALTO HUMANO</span><span>BRAZILIAN: SALTO DA HUMANIDADE</span><span>INDONESIAN: LOMPATAN MANUSIA</span><span>VIETNAMESE: BƯỚC NHẢY NHÂN LOẠI</span><span>THAI: การก้าวกระโดดของมนุษย์</span><span>NIGERIAN: IGBESE ENIYAN</span>
-            <span>KOREAN: HK HOLDINGS 비전</span><span>ENGLISH: GLOBAL ALLIANCE</span><span>CHINESE: 全球联盟</span>
-        </div>
+    <div class="top-lang">
+        KOR ENG CHN ARA HIN RUS FRA UKR JPN SPA BRA IDN VIE THA NGA
     </div>
 
     <header>
         <div class="main-logo">HK HOLDINGS</div>
-        <div class="sub-text">GLOBAL STRATEGIC ALLIANCE</div>
+        <div class="sub-vision">INTEGRATED STRATEGIC INDUSTRIES ALLIANCE</div>
     </header>
 
-    <div class="vision-container">
+    <div class="vision-wall">
+        
         <details>
             <summary>01. HUMANOID ROBOTICS</summary>
-            <div class="details-content">
-                <h4>로보틱스: 인류 노동의 완전한 해방</h4>
-                <p>HK HOLDINGS는 Figure AI와의 전격적인 기술 통합을 통해, 24시간 쉬지 않는 지능형 로봇 군단을 구축합니다. 이는 단순한 기계 제작이 아닌, 인류를 단순 반복 노동에서 영원히 해방시키는 '노동 혁명'의 서사시입니다.</p>
-                <ul class="tech-list">
-                    <li>**신경망 제어**: Figure AI의 인공지능 뇌와 HK의 고성능 액추에이터 결합.</li>
-                    <li>**기가 팩토리**: 울산과 포항을 잇는 세계 최대 로봇 생산 벨트 조성.</li>
-                    <li>**심우주 투입**: 화성 기지 건설을 위한 자율 건축 로봇 개발 및 배치.</li>
-                </ul>
-                <p>우리는 로봇이 인간의 안전을 지키고, 인간은 창의적인 삶을 영위하는 시대를 앞당길 것입니다.</p>
+            <div class="content">
+                <h4>제1장: 노동의 해방과 지능의 진화</h4>
+                <p>HK HOLDINGS는 인류의 신체적 한계를 극복하기 위해 Figure AI와의 전략적 합병을 추진하며, 인공지능과 하드웨어의 완벽한 결합을 꿈꿉니다. 우리의 로봇 군단은 단순한 기계가 아니라 인류 문명의 새로운 동반자입니다.</p>
+                
+                <div class="tech-box">
+                    <ul>
+                        <li>**신경망 제어 엔진**: 인간의 근육 움직임을 99.9% 재현하는 초정밀 액추에이터 및 실시간 추론 AI 탑재.</li>
+                        <li>**자가 학습 아키텍처**: 현장에서 발생하는 예외 상황을 스스로 학습하여 수 초 내에 최적의 해법을 도출하는 딥러닝 시스템.</li>
+                        <li>**멀티모달 감각 체계**: 시각, 촉각, 청각을 통합하여 복잡한 도심 환경 및 극한의 오지에서도 완벽한 작업 수행.</li>
+                    </ul>
+                </div>
+
+                <h4>세부 전략 로드맵 (2026-2035)</h4>
+                <p>우리는 영남권(울산, 포항)을 잇는 대규모 로봇 특구 'Haeorum Robotics Belt'를 구축하여 연간 100만 대 이상의 휴머노이드를 생산할 것입니다. 이 로봇들은 건설 현장의 안전을 책임지고, 고령화 시대의 가사 노동을 전담하게 될 것입니다.</p>
+                <p>로봇이 노동을 대신하고 인간은 창의성과 철학에 집중하는 세상, 그것이 HK HOLDINGS가 정의하는 미래의 시작입니다. 우리의 로봇은 화성 기지 건설의 선봉대가 되어 인류보다 먼저 우주에 깃발을 꽂을 것입니다.</p>
             </div>
         </details>
 
         <details>
             <summary>02. NUCLEAR FUSION</summary>
-            <div class="details-content">
-                <h4>핵융합: 인공태양으로 만드는 무한 동력</h4>
-                <p>에너지 전쟁의 종말을 선언합니다. HK의 핵융합 기술은 바닷물의 중수소를 이용해 무한한 에너지를 생산하는 '지상의 인공태양' 프로젝트의 정점입니다.</p>
-                <ul class="tech-list">
-                    <li>**HK 토카막**: 1.5억 도의 초고온 플라즈마를 무한히 가두는 자기장 제어 기술.</li>
-                    <li>**에너지 독립**: 전 세계 모든 거점에 저렴하고 깨끗한 핵융합 전력 공급망 구축.</li>
-                    <li>**탄소 제로**: 화석 연료 시대를 끝내고 지구 온난화를 원천 차단하는 궁극의 에너지 솔루션.</li>
-                </ul>
+            <div class="content">
+                <h4>제2장: 무한 에너지, 지상의 인공태양</h4>
+                <p>에너지의 자립은 진정한 자유의 시작입니다. HK의 핵융합 프로젝트는 인류 역사상 가장 거대한 에너지 혁명을 목표로 하며, 바닷물 속의 무궁무진한 자원을 인류의 동력으로 전환합니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**HK-Tokamak 2.0**: 고온 초전도 자석을 활용하여 1.5억 도의 플라즈마를 안정적으로 가두는 독자적 자기장 제어 기술.</li>
+                        <li>**중수소 추출 인프라**: 동해안을 중심으로 한 대규모 해수 추출 설비 및 수소 저장 합금 네트워크 구축.</li>
+                        <li>**한계 비용 제로(Zero)**: 에너지 생산 단가를 획기적으로 낮추어 전 세계 산업의 생산 원가를 70% 이상 절감하는 경제 혁명.</li>
+                    </ul>
+                </div>
+
+                <h4>에너지 민주주의의 실현</h4>
+                <p>에너지로 인한 국가 간의 갈등은 끝날 것입니다. HK의 핵융합 발전은 지구 온난화를 멈추는 유일하고 확실한 대안이며, 탄소 중립을 넘어 탄소 네거티브(Carbon Negative) 시대를 여는 핵심 열쇠입니다.</p>
+                <p>우리는 핵융합 전력을 기반으로 전 세계에 무료 와이파이와 같은 '공공 에너지망'을 보급하여, 에너지 빈곤층이 없는 세상을 만들 것입니다. 이는 HK가 추구하는 인류 공동 번영의 가치와 직결됩니다.</p>
             </div>
         </details>
 
         <details>
             <summary>03. SPACE INFRASTRUCTURE</summary>
-            <div class="details-content">
-                <h4>우주 인프라: 성간 문명의 개척자</h4>
-                <p>지구는 인류의 요람이지만, 우리는 요람에서 나갈 때가 되었습니다. HK는 화성 테라포밍과 성간 통신 인프라를 통해 인류를 다행성 종족으로 변모시킵니다.</p>
-                <ul class="tech-list">
-                    <li>**화성 베이스 알파**: 로봇 군단을 이용한 자율 건축 우주 도시 건설.</li>
-                    <li>**성간 전송망**: 양자 얽힘 기반의 광속 통신 네트워크 'HK-StarNet'.</li>
-                    <li>**희귀 자원 채굴**: 소행성에서 희토류를 채굴하여 지구 자원 고갈 문제 해결.</li>
-                </ul>
+            <div class="content">
+                <h4>제3장: 지구를 넘어 성간 문명으로</h4>
+                <p>요람을 떠나 우주로 나가는 것은 선택이 아닌 생존입니다. HK HOLDINGS는 화성 테라포밍과 심우주 자원 채굴을 통해 지구의 자원 한계를 돌파하고 인류의 거주 영역을 행성 단위로 확장합니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**HK-StarShip**: 재사용 가능한 대형 발사체를 통해 우주 수송 비용을 현재의 1/100 수준으로 단축.</li>
+                        <li>**소행성 채굴 시스템**: 희토류와 백금이 매장된 소행성을 포획하여 우주 궤도에서 정련하는 자동화 플랜트.</li>
+                        <li>**양자 통신 위성망**: 광속의 한계를 극복하기 위해 양자 얽힘 현상을 이용한 지연 없는 우주 실시간 통신망 구축.</li>
+                    </ul>
+                </div>
+
+                <h4>화성 베이스 알파와 그 너머</h4>
+                <p>우리는 화성에 100만 명이 거주할 수 있는 자급자족형 도시를 건설합니다. 로봇 군단이 먼저 파견되어 지하 거주지를 구축하고 공기 정화 시스템을 가동하면, 인류는 두 번째 고향을 갖게 될 것입니다.</p>
+                <p>우주 산업은 단순한 탐사가 아니라 거대한 경제권의 형성입니다. HK는 우주 호텔, 달 궤도 물류 허브, 화성 광산 등 상상 속의 비즈니스를 현실의 매출로 증명해낼 것입니다.</p>
             </div>
         </details>
 
         <details>
             <summary>04. GLOBAL PARTSBANK</summary>
-            <div class="details-content">
-                <h4>부품 뱅크: 전 세계 산업의 심장부</h4>
-                <p>산업이 멈추지 않게 하는 것은 부품입니다. HK PARTSBANK는 AI 물류 엔진을 통해 전 세계 어디든 24시간 내에 부품을 조달하는 글로벌 신경망입니다.</p>
-                <ul class="tech-list">
-                    <li>**AI 수요 예측**: 부품 고장을 미리 예측하여 선제적으로 부품을 배송하는 시스템.</li>
-                    <li>**3D 프린팅 온디맨드**: 단종된 부품을 현장에서 즉각 출력하는 디지털 창고.</li>
-                    <li>**블록체인 유통**: 모든 부품의 정품 여부와 이력을 투입 단계부터 추적 관리.</li>
-                </ul>
+            <div class="content">
+                <h4>제4장: 세계 산업의 심장, 물류의 대혈관</h4>
+                <p>기계 문명이 멈추지 않게 하는 가장 강력한 시스템, 그것이 바로 HK PARTSBANK입니다. 전 세계 모든 부품의 데이터를 통합하고 실시간으로 조달하는 글로벌 신경망을 구축합니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**AI 예측 유지보수(Predictive Maintenance)**: 전 세계 산업 장비의 센서 데이터를 실시간 분석하여 고장 전 부품을 배송.</li>
+                        <li>**하이퍼루프 물류망**: 대형 거점 간 이동 시간을 시간 단위에서 분 단위로 단축하는 진공 튜브 전송 시스템.</li>
+                        <li>**디지털 트윈 부품창고**: 실물 재고 없이 설계 데이터만으로 3D 프린팅하여 즉각 부품을 조달하는 '재고 제로' 실험.</li>
+                    </ul>
+                </div>
+
+                <h4>글로벌 공급망의 재정의</h4>
+                <p>우리는 전 세계 50개 국에 스마트 자동화 물류 센터를 구축합니다. 이는 단순한 창고가 아니라 AI가 모든 재고를 최적화하고 관리하는 지능형 허브입니다. 중소 제조 기업부터 대규모 플랜트까지, HK의 부품 뱅크 없이는 가동되지 않는 세상을 만들 것입니다.</p>
+                <p>신뢰와 속도, 이것이 PARTSBANK가 시장을 지배하는 원동력입니다. 모든 부품은 블록체인으로 인증되어 위조 부품이 존재할 수 없는 투명한 생태계를 완성합니다.</p>
             </div>
         </details>
 
         <details>
             <summary>05. URBAN AIR MOBILITY</summary>
-            <div class="details-content">
-                <h4>UAM: 도심 하늘길의 혁명</h4>
-                <p>지상의 혼잡은 이제 끝입니다. HK의 자율 비행 모빌리티는 도심 공간을 3차원으로 연결하여 이동의 정의를 새롭게 씁니다.</p>
-                <ul class="tech-list">
-                    <li>**HK-SkyCar**: 소음 없이 도심을 가로지르는 전기 수직 이착륙기 상용화.</li>
-                    <li>**하늘길 관제**: 수만 대의 비행체가 충돌 없이 이동하는 초정밀 AI 관제망.</li>
-                    <li>**버티포트 네트워크**: 주요 건물 옥상을 잇는 초고속 항공 이동 거점 확보.</li>
-                </ul>
+            <div class="content">
+                <h4>제5장: 도심 이동의 3차원 혁명</h4>
+                <p>교통 체증이라는 단어를 역사 속으로 사라지게 하겠습니다. HK의 UAM 솔루션은 하늘길을 민주화하고, 물리적 이동을 통신처럼 자유롭고 빠르게 만듭니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**자율 비행 제어 알고리즘**: 기상 악화나 통신 장애 시에도 스스로 안전한 경로를 찾아 착륙하는 6중 안전 제어 시스템.</li>
+                        <li>**초경량 전기 추진 모터**: 소음을 50데시벨(일상 대화 수준) 이하로 낮추어 도심 주거지에서도 운행 가능한 저소음 비행체.</li>
+                        <li>**수직 이착륙(eVTOL) 스테이션**: 주요 건물 옥상을 잇는 초고속 버티포트(Vertiport) 인프라 전국망 구축.</li>
+                    </ul>
+                </div>
+
+                <h4>공간과 시간의 해방</h4>
+                <p>서울에서 울산까지 20분, 도심 내 이동은 5분이면 충분합니다. 이는 단순한 속도의 문제가 아니라 인간이 도로 위에서 낭비하는 수만 시간을 가족과 창의적 활동에 돌려주는 가치의 문제입니다.</p>
+                <p>HK의 UAM은 응급 환자 이송, 긴급 물류, 도심 관광 등 다양한 분야로 확장되어 도시의 구조 자체를 입체적으로 재편할 것입니다. 우리는 땅 위의 길을 버리고 하늘 위에 길을 만듭니다.</p>
             </div>
         </details>
 
         <details>
             <summary>06. HOLOGRAPHIC COMM.</summary>
-            <div class="details-content">
-                <h4>홀로그램 통신: 시공간을 넘는 연결</h4>
-                <p>멀리 떨어진 가족과 동료가 내 앞에 실제로 나타납니다. HK 홀로폰은 2D 화면을 넘어선 3D 리얼리티 통신의 시대를 엽니다.</p>
-                <ul class="tech-list">
-                    <li>**광학 렌더링**: 특수 안경 없이 맨눈으로 보는 고해상도 홀로그램 기술.</li>
-                    <li>**원격 실재감**: 시공간을 초월한 완벽한 실시간 공간 전송(Telepresence).</li>
-                    <li>**메타 협업**: 가상 공간에서 전 세계 파트너가 모여 실물 크기로 토론하는 환경.</li>
-                </ul>
+            <div class="content">
+                <h4>제6장: 시공간을 초월하는 리얼리티 연결</h4>
+                <p>스크린 속에 갇힌 소통은 이제 과거의 유산입니다. HK의 홀로그램 기술은 멀리 떨어진 사람을 내 눈앞의 현실 공간으로 불러오는 '실재감의 혁명'입니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**리얼 타임 볼륨메트릭 렌더링**: 수만 개의 카메라 데이터를 실시간으로 합성하여 360도 어디서든 자연스러운 입체 영상 구현.</li>
+                        <li>**무안경 홀로그래픽 디스플레이**: 특수 장비 없이 육안으로 공중에 뜬 입체 영상을 감상할 수 있는 광학 기술 상용화.</li>
+                        <li>**햅틱 인터페이스**: 홀로그램 영상을 직접 만지고 조작하며 촉각까지 느낄 수 있는 가상 상호작용 시스템 연동.</li>
+                    </ul>
+                </div>
+
+                <h4>물리적 거리의 완전한 소멸</h4>
+                <p>지구 반대편에 있는 가족과 함께 식사하고, 해외 석학을 교실로 불러 실물 크기로 수업을 듣는 세상이 옵니다. 이는 비즈니스 출장 비용을 제로로 만들고, 탄소 배출을 획기적으로 줄이는 환경적 효과까지 가져올 것입니다.</p>
+                <p>우리는 홀로폰을 통해 인류의 사회적 관계망을 3차원으로 확장합니다. 소통은 더 이상 시각과 청각에 의존하지 않고 공간 전체의 경험으로 진화합니다.</p>
             </div>
         </details>
 
         <details>
             <summary>07. QUANTUM BIOTECHNOLOGY</summary>
-            <div class="details-content">
-                <h4>양자 바이오: 난치병 정복과 생명 연장</h4>
-                <p>양자 역학의 힘으로 질병을 정복합니다. 인류의 건강 수명을 120세 이상으로 연장하는 것이 HK 바이오의 사명입니다.</p>
-                <ul class="tech-list">
-                    <li>**양자 진단**: 세포의 미세한 변화를 포착하여 암을 발병 전 정복하는 기술.</li>
-                    <li>**유전자 정밀 타격**: 개인 맞춤형 유전자 교정을 통한 선천적 질환 치료.</li>
-                    <li>**노화 역행**: 세포 노화를 늦추고 생체 기능을 복구하는 텔로미어 엔지니어링.</li>
-                </ul>
+            <div class="content">
+                <h4>제7장: 생명의 설계도를 양자로 해독하다</h4>
+                <p>죽음과 질병에 대한 인류의 도전에 마침표를 찍습니다. HK 양자 바이오는 양자 역학의 초정밀 시뮬레이션을 통해 암을 정복하고 인류의 생체 시계를 되돌리는 대서사시를 완성합니다.</p>
+
+                <div class="tech-box">
+                    <ul>
+                        <li>**양자 컴퓨터 신약 시뮬레이션**: 수조 번의 조합을 단 몇 분 만에 계산하여 부작용 없는 맞춤형 항암제 개발.</li>
+                        <li>**분자 수준 유전자 교정**: 양자 센서로 세포의 오작동을 실시간 감지하고 나노 로봇으로 정밀 수리하는 기술.</li>
+                        <li>**텔로미어 복원 엔지니어링**: 세포의 노화 속도를 조절하여 건강한 신체 능력을 120세 이상 유지하는 생명 연장 프로젝트.</li>
+                    </ul>
+                </div>
+
+                <h4>불멸을 향한 인류의 꿈</h4>
+                <p>우리는 질병이 '발생한 후 치료'하는 것이 아니라, '발생 전 차단'하는 선제적 건강 관리 시스템을 구축합니다. 모든 인류는 자신의 양자 바이오 데이터를 클라우드에 보관하고 실시간으로 관리받게 될 것입니다.</p>
+                <p>건강한 수명 연장은 인류의 지혜를 더 오래 보존하게 할 것이며, 이는 문명의 비약적인 발전으로 이어질 것입니다. HK는 생명이라는 우주의 신비를 과학으로 정복해 나가겠습니다.</p>
             </div>
         </details>
+
     </div>
 
     <footer>
-        <p style="color: #444; margin-bottom: 20px; letter-spacing: 5px;">STRATEGIC CONTACT</p>
+        <p style="color: #333; margin-bottom: 25px; letter-spacing: 5px; font-weight: 100;">GLOBAL CONTACT CENTER</p>
         <a href="mailto:info@hkholdings.ai.kr" class="footer-mail">info@hkholdings.ai.kr</a>
 
-        <div class="social-hub">
-            <a href="https://youtube.com" target="_blank">
+        <div class="social-container">
+            <a href="https://youtube.com/@HK-Holdings" target="_blank">
                 <i class="fab fa-youtube" style="color: #FF0000;"></i>
-                <span>YOUTUBE</span>
+                <span>YOUTUBE CHANNEL</span>
             </a>
-            <a href="https://tiktok.com" target="_blank">
+            <a href="https://tiktok.com/@hkholdings" target="_blank">
                 <i class="fab fa-tiktok"></i>
-                <span>TIKTOK</span>
+                <span>TIKTOK GLOBAL</span>
             </a>
         </div>
 
-        <div class="chairman-signature">CHAIRMAN: LEE JAEWAN (HYEKONG)</div>
-        <p style="color: #222; font-size: 0.7rem; margin-top: 20px;">© 2026 HK HOLDINGS. ALL RIGHTS RESERVED. Hwa-i-ting!</p>
+        <div class="signature">CHAIRMAN: LEE JAEWAN (HYEKONG)</div>
+        <p style="color: #111; font-size: 0.75rem; margin-top: 20px;">© 2026 HK HOLDINGS. HWA-I-TING! ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
