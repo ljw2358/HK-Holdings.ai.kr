@@ -3,216 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HK HOLDINGS | HK-Holdings.ai.kr</title>
+    <title>HK HOLDINGS | 글로벌 리더 이재완</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&family=Noto+Sans+KR:wght@100;300;400;700;900&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --gold: #D4AF37;
             --dark-bg: #050505;
-            --card-bg: #0f0f0f;
-            --text-gray: #777;
-            --glow: 0 0 25px rgba(212, 175, 55, 0.3);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --card-gray: #0d0d0d;
+            --text-silver: #a0a0a0;
+            --glow: 0 0 40px rgba(212, 175, 55, 0.4);
         }
 
         /* 기본 설정 */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
         body {
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
+            background-color: var(--dark-bg); color: white;
+            font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden;
+            line-height: 2.5; -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
         }
 
-        /* [수정] 우측 상단 15개 언어 선택 (전광판) */
-        .lang-marquee-box {
-            position: fixed; top: 20px; right: 20px; z-index: 5000;
-            width: 170px; overflow: hidden; background: rgba(10, 10, 10, 0.8);
-            border: 1px solid var(--gold); border-radius: 4px; padding: 5px 0;
-            backdrop-filter: blur(8px);
+        /* [요청] 언어 정지 및 고급스러운 고정 배치 */
+        .lang-fixed-panel {
+            position: fixed; top: 25px; right: 25px; z-index: 9999;
+            width: 250px; background: rgba(0, 0, 0, 0.95);
+            border: 1px solid var(--gold); border-radius: 2px;
+            padding: 15px; backdrop-filter: blur(20px);
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+            box-shadow: var(--glow);
         }
-        .lang-marquee {
-            display: flex; white-space: nowrap; animation: langScroll 20s linear infinite;
+        .lang-fixed-panel span {
+            font-size: 0.65rem; color: var(--gold); font-weight: 900;
+            text-align: center; border-bottom: 1px solid #222; padding-bottom: 2px;
         }
-        .lang-marquee span {
-            padding: 0 15px; font-size: 0.6rem; color: var(--gold);
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-        }
-        @keyframes langScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-150%); } }
 
-        /* [수정] PC/모바일 모두 대응하는 웅장한 히어로 섹션 */
+        /* 메인 히어로 섹션 */
         header {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            padding: 0 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            position: relative;
         }
-        .main-logo {
-            font-family: 'Montserrat'; font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 900; color: var(--gold); letter-spacing: 25px;
-            text-shadow: var(--glow); margin-bottom: 20px;
+        .hero-title {
+            font-family: 'Cinzel', serif; font-size: clamp(3rem, 15vw, 10rem);
+            color: var(--gold); letter-spacing: 25px; text-shadow: var(--glow);
+            font-weight: 900; margin-bottom: 30px; animation: fadeIn 2s;
         }
-        .sub-vision {
+        .hero-sub {
             font-family: 'Montserrat'; font-size: 1rem; color: #444;
-            letter-spacing: 12px; font-weight: 100; text-transform: uppercase;
+            letter-spacing: 15px; font-weight: 300; text-transform: uppercase;
         }
 
-        /* 7대 핵심 산업 비전 (PC 기준 가독성 최적화) */
-        .vision-container { max-width: 1200px; margin: 0 auto 150px; padding: 0 20px; }
-        .sector-intro { text-align: center; margin-bottom: 100px; }
-        .sector-intro h2 { font-size: 2.8rem; color: var(--gold); font-weight: 900; }
-        .sector-intro p { color: var(--text-gray); font-weight: 100; }
+        /* 7대 핵심 비전 섹션 (내용 대폭 강화) */
+        .vision-container { max-width: 1300px; margin: 150px auto; padding: 0 30px; }
+        .section-header { text-align: center; margin-bottom: 120px; }
+        .section-header h2 { font-family: 'Cinzel'; font-size: 4rem; color: var(--gold); margin-bottom: 20px; }
+        .section-header .bar { width: 120px; height: 4px; background: var(--gold); margin: 0 auto; }
 
-        details {
-            background: var(--card-bg); border: 1px solid #1a1a1a;
-            margin-bottom: 30px; transition: var(--transition);
+        .industry-card {
+            background: var(--card-gray); border: 1px solid #151515;
+            margin-bottom: 60px; border-radius: 8px; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        details:hover { border-color: var(--gold); box-shadow: var(--glow); }
+        .industry-card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: var(--glow); }
 
         summary {
-            padding: 40px; font-family: 'Montserrat'; font-size: clamp(1.3rem, 4vw, 2.2rem);
+            padding: 55px; font-family: 'Montserrat'; font-size: clamp(1.5rem, 4.5vw, 2.8rem);
             font-weight: 900; color: var(--gold); cursor: pointer; list-style: none;
             display: flex; justify-content: space-between; align-items: center;
-            letter-spacing: 3px;
+            letter-spacing: 6px;
         }
-        summary::after { content: "+"; font-size: 2rem; color: var(--gold); transition: 0.4s; }
-        details[open] summary::after { transform: rotate(45deg); }
+        summary::after { content: "\f067"; font-family: "Font Awesome 6 Free"; font-size: 2rem; transition: 0.4s; }
+        details[open] summary::after { transform: rotate(45deg); color: white; }
 
-        /* 500줄을 위한 방대한 내용 보충 */
         .details-content {
-            padding: 0 40px 60px; color: #ccc; font-weight: 300; font-size: 1.15rem;
-            border-top: 1px solid #222; margin-top: 10px; padding-top: 40px;
+            padding: 0 55px 100px; border-top: 1px solid #222; animation: slideUp 0.8s;
         }
-        .details-content h4 { color: white; margin-bottom: 25px; font-size: 1.6rem; }
-        .details-content p { margin-bottom: 30px; line-height: 2.2; }
-        .tech-list { list-style: none; margin-bottom: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .tech-list li {
-            padding: 30px; background: #080808; border: 1px solid #1a1a1a;
-            border-left: 3px solid var(--gold); color: #ddd;
+        .details-content h3 {
+            font-size: 2.2rem; color: white; margin: 70px 0 40px;
+            font-weight: 900; border-left: 10px solid var(--gold); padding-left: 30px;
         }
-        .tech-list li::before { content: "◆"; color: var(--gold); margin-right: 15px; font-size: 0.9rem; }
+        .details-content p { font-size: 1.3rem; color: #999; margin-bottom: 50px; line-height: 2.4; }
 
-        /* 최하단 푸터: 유튜브/틱톡 새 창 연결 완료 */
+        /* 핵심 기술 그리드 */
+        .tech-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; margin-top: 60px;
+        }
+        .tech-box {
+            background: #000; border: 1px solid #1a1a1a; padding: 45px;
+            border-bottom: 5px solid var(--gold);
+        }
+        .tech-box h5 { color: var(--gold); font-size: 1.6rem; margin-bottom: 25px; font-weight: 800; }
+        .tech-box ul { list-style: none; color: #777; font-size: 1.1rem; }
+        .tech-box li { margin-bottom: 15px; position: relative; padding-left: 20px; }
+        .tech-box li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+
+        /* 푸터 및 SNS 연동 (똑바로 수정) */
         footer {
-            padding: 180px 20px 100px; text-align: center; border-top: 1px solid #222;
-            background: #000;
+            padding: 200px 30px 100px; text-align: center; background: #000;
+            border-top: 1px solid #1a1a1a;
         }
-        .footer-mail {
-            font-size: clamp(1.4rem, 5vw, 2.5rem); color: var(--gold); text-decoration: none;
-            font-weight: 900; border-bottom: 3px solid var(--gold); display: inline-block;
-            margin-bottom: 80px; transition: 0.3s;
-        }
-        .footer-mail:hover { color: white; border-color: white; }
-
-        .social-hub { display: flex; justify-content: center; gap: 80px; margin-bottom: 120px; }
-        .social-hub a {
+        .sns-hub { display: flex; justify-content: center; gap: clamp(50px, 15vw, 150px); margin-bottom: 150px; }
+        .sns-hub a {
             color: white; text-decoration: none; display: flex; flex-direction: column;
-            align-items: center; gap: 20px; transition: 0.4s;
+            align-items: center; gap: 30px; transition: 0.5s;
         }
-        .social-hub i { font-size: 4.5rem; transition: 0.4s; }
-        .social-hub a:hover i { color: var(--gold); transform: scale(1.15); }
-        .social-hub span { font-family: 'Montserrat'; font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; }
+        .sns-hub i { font-size: 6rem; transition: 0.4s; }
+        .sns-hub a:hover { color: var(--gold); transform: translateY(-20px); }
+        .sns-hub span { font-weight: 900; letter-spacing: 6px; font-size: 1.3rem; font-family: 'Montserrat'; }
 
-        .signature { font-family: 'Montserrat'; font-weight: 900; color: #222; letter-spacing: 12px; font-size: 1.2rem; }
+        .signature-text { font-family: 'Cinzel'; font-size: 1.8rem; color: #1a1a1a; letter-spacing: 20px; font-weight: 900; }
 
-        /* PC용 보완 스타일 */
-        @media (min-width: 1024px) {
-            .vision-container { padding: 0; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 모바일용 자율 조정 */
         @media (max-width: 768px) {
-            .main-logo { letter-spacing: 5px; }
-            summary { padding: 30px 20px; }
-            .details-content { padding: 30px 20px; }
-            .social-hub { flex-direction: column; gap: 60px; }
+            .hero-title { letter-spacing: 10px; }
+            .sns-hub { flex-direction: column; gap: 80px; }
+            summary { padding: 40px 20px; }
+            .details-content { padding: 0 25px 60px; }
+            .lang-fixed-panel { width: 180px; grid-template-columns: repeat(3, 1fr); right: 10px; top: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="lang-marquee-box">
-        <div class="lang-marquee">
-            <span>한글</span><span>English</span><span>中国</span><span>العربية</span><span>हिन्दी</span><span>Русский</span><span>Français</span><span>Українська</span><span>日本語</span><span>Español</span><span>Português</span><span>Bahasa Indonesia</span><span>Tiếng Việt</span><span>ไทย</span><span>NGA</span>
-        </div>
+    <div class="lang-fixed-panel">
+        <span>한글</span><span>EN</span><span>中國</span><span>العربية</span><span>हिन्दी</span><span>PYC</span><span>FR</span><span>UA</span><span>日本語</span><span>ES</span><span>PT</span><span>ID</span><span>VN</span><span>TH</span><span>NG</span><span>DE</span>
     </div>
 
     <header>
-        <div class="main-logo">HK HOLDINGS</div>
-        <div class="sub-vision">INTEGRATED STRATEGIC ALLIANCE</div>
+        <div class="hero-title">HK HOLDINGS</div>
+        <div class="hero-sub">The Master Key of Global Future Industry</div>
     </header>
 
     <div class="vision-container">
-        <div class="sector-intro">
-            <h2>THE 7 PILLARS</h2>
-            <p>우리는 인류 문명의 운영 체제를 재설계합니다.</p>
+        <div class="section-header">
+            <h2>THE 7 CORE PILLARS</h2>
+            <div class="bar"></div>
         </div>
 
-        <details>
-            <summary>01. HUMANOID ROBOTICS</summary>
-            <div class="details-content">
-                <h4>제1장: 노동의 완전한 해방</h4>
-                <p>HK HOLDINGS는 Figure AI와의 전격적인 기술 통합을 통해 인류의 물리적 노동을 대체하는 수준을 넘어, 지능형 자율 유기체로서의 휴머노이드를 완성합니다.</p>
-                <ul class="tech-list">
-                    <li>**Figure AI 신경망 통합**: Figure AI의 AI 뇌와 HK의 고성능 하드웨어 결합.</li>
-                    <li>**기가 팩토리 생산 벨트**: 연간 수백만 대의 휴머노이드를 생산하는 압도적 제조 능력.</li>
-                    <li>**극한 환경 생존 기술**: 붕괴 직전의 건물, 방사능 지대 등 인간이 갈 수 없는 곳 투입.</li>
-                    <li>**1가구 1로봇 보급**: 가사 노동 제로(Zero)화를 통한 인간 삶의 가치 재정의.</li>
-                </ul>
-            </div>
-        </details>
+        <div class="industry-card">
+            <details>
+                <summary>01. HUMANOID ROBOTICS</summary>
+                <div class="details-content">
+                    <h3>Figure AI 협력 및 노동 혁명</h3>
+                    <p>HK HOLDINGS는 인류의 신체적 한계를 극복하고 모든 단순 노동을 지능형 로봇으로 대체하는 '노동으로부터의 해방'을 꿈꿉니다. Figure AI와의 기술 결합은 그 시작일 뿐입니다.</p>
+                    <div class="tech-grid">
+                        <div class="tech-box">
+                            <h5>HK-Neural Engine</h5>
+                            <ul>
+                                <li>실시간 자율 학습 기반 동작 최적화</li>
+                                <li>인간의 미세 근육 움직임을 99% 재현</li>
+                                <li>멀티모달 AI 탑재로 언어/사물 인지 완벽 수행</li>
+                            </ul>
+                        </div>
+                        <div class="tech-box">
+                            <h5>Mega-Giga Factory</h5>
+                            <ul>
+                                <li>연간 1,000만 대 규모의 양산 라인 설계</li>
+                                <li>전 공정 로봇 자율 생산 시스템 도입</li>
+                                <li>글로벌 부품 공급망 HK-PartsBank 연동</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
 
-        <details>
-            <summary>02. NUCLEAR FUSION</summary>
-            <div class="details-content">
-                <h4>제2장: 무한 에너지, 지상의 인공태양</h4>
-                <p>에너지가 곧 경제이자 자유인 시대입니다. HK의 핵융합은 인류 문명의 지속 가능성을 담보하는 궁극의 동력원입니다.</p>
-                <ul class="tech-list">
-                    <li>**1.5억 도 고온 플라즈마 제어**: 플라즈마를 안정적으로 유지하는 초정밀 토카막 기술.</li>
-                    <li>**에너지 민주주의 실현**: 전 세계 모든 거점에 저렴하고 깨끗한 무한 에너지 보급.</li>
-                    <li>**탄소 네거티브(Negative)**: 화석 연료 시대를 원천 종식시키는 유일한 대안.</li>
-                    <li>**소형 핵융합로(SMR)**: 대형 선박, 오지 기지에도 적용 가능한 모듈형 발전 시스템.</li>
-                </ul>
-            </div>
-        </details>
+        <div class="industry-card">
+            <details>
+                <summary>02. NUCLEAR FUSION</summary>
+                <div class="details-content">
+                    <h3>지상의 인공태양: 에너지 제로화</h3>
+                    <p>에너지는 문명의 기초입니다. HK HOLDINGS는 인류가 더 이상 에너지 부족으로 고통받지 않는 세상을 만들기 위해 핵융합 원천 기술을 상용화합니다.</p>
+                    <div class="tech-grid">
+                        <div class="tech-box">
+                            <h5>Plasma Core Tech</h5>
+                            <ul>
+                                <li>1.5억 도 이상의 고온 플라즈마 초장시간 유지</li>
+                                <li>차세대 초전도 자석 시스템 기반 자기장 제어</li>
+                                <li>고수율 삼중수소 연료 변환 기술</li>
+                            </ul>
+                        </div>
+                        <div class="tech-box">
+                            <h5>HK Energy Grid</h5>
+                            <ul>
+                                <li>전 지구적 초전도 송전망 인프라 구축</li>
+                                <li>지역별 마이크로 핵융합 발전소 보급</li>
+                                <li>에너지 평등화를 통한 글로벌 격차 해소</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
 
-        <details>
-            <summary>03. SPACE INFRASTRUCTURE</summary>
-            <div class="details-content">
-                <h4>제3장: 화성 테라포밍과 성간 통신</h4>
-                <p>지구는 인류의 요람이지만, 우리는 요람에서 나갈 때가 되었습니다. HK는 화성과 소행성을 잇는 거대 우주 경제권을 구축합니다.</p>
-                <ul class="tech-list">
-                    <li>**HK-StarNet 구축**: 양자 얽힘 기반의 광속 지연 없는 우주 전역 실시간 통신망.</li>
-                    <li>**화성 베이스 알파**: 자율 건설 로봇 군단을 통한 행성 기반 테라포밍 시스템.</li>
-                    <li>**심우주 자원 채굴**: 희토류와 백금이 매장된 소행성 포획 및 채굴 자동화 플랜트.</li>
-                    <li>**차세대 스페이스십**: 1회 발사 비용을 획기적으로 낮춘 대형 재사용 발사체 시스템.</li>
-                </ul>
-            </div>
-        </details>
+        <div class="industry-card">
+            <details>
+                <summary>03. SPACE INFRASTRUCTURE</summary>
+                <div class="details-content">
+                    <h3>화성 테라포밍 및 성간 물류망</h3>
+                    <p>지구는 인류의 요람이지만, 무덤이 될 수는 없습니다. HK HOLDINGS는 인류가 다행성 종족으로 거듭나기 위한 우주 고속도로를 건설합니다.</p>
+                    <div class="tech-grid">
+                        <div class="tech-box">
+                            <h5>Reusable Rocket</h5>
+                            <ul>
+                                <li>100% 재사용 가능한 헤비급 발사체 운용</li>
+                                <li>궤도상 급유 및 우주선 수리 플랫폼</li>
+                                <li>심우주 탐사를 위한 원자력 추진 엔진</li>
+                            </ul>
+                        </div>
+                        <div class="tech-box">
+                            <h5>HK-StarNet</h5>
+                            <ul>
+                                <li>지구-달-화성을 잇는 양자 통신 위성망</li>
+                                <li>행성 간 실시간 데이터 동기화 시스템</li>
+                                <li>우주 경제권 전용 HK WorldBank 결제 모듈</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
 
         </div>
 
     <footer>
-        <a href="mailto:info@hkholdings.ai.kr" class="footer-mail">info@hkholdings.ai.kr</a>
-
-        <div class="social-hub">
+        <div class="sns-hub">
             <a href="https://youtube.com/@HK-Holdings" target="_blank">
                 <i class="fab fa-youtube" style="color: #FF0000;"></i>
-                <span>YOUTUBE CHANNEL</span>
+                <span>YOUTUBE</span>
             </a>
             <a href="https://tiktok.com/@hkholdings" target="_blank">
-                <i class="fab fa-tiktok"></i>
-                <span>TIKTOK GLOBAL</span>
+                <i class="fab fa-tiktok" style="color: #FFFFFF;"></i>
+                <span>TIKTOK</span>
             </a>
         </div>
-
-        <div class="signature">CHAIRMAN: LEE JAEWAN (HYEKONG)</div>
-        <p style="color: #111; font-size: 0.8rem; margin-top: 30px;">HWA-I-TING! ALL RIGHTS RESERVED.</p>
+        <div class="signature-text">CHAIRMAN: LEE JAEWAN</div>
+        <p style="color: #111; margin-top: 50px; font-weight: 900; letter-spacing: 5px;">HWA-I-TING! HK GROUP GLOBAL HQ.</p>
     </footer>
 
 </body>
